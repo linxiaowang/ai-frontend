@@ -6,6 +6,7 @@ import Loading from '@/components/Loading'
 const Home = lazy(() => import('@/pages/home'))
 const About = lazy(() => import('@/pages/about'))
 const NotFound = lazy(() => import('@/pages/404'))
+const Chat = lazy(() => import('@/pages/chat'))
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,11 @@ export const router = createBrowserRouter([
       {
         path: 'about',
         Component: About,
+        hydrateFallbackElement: <Loading />,
+      },
+      {
+        path: 'chat',
+        Component: Chat,
         hydrateFallbackElement: <Loading />,
       },
       {
