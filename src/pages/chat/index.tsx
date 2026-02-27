@@ -88,7 +88,7 @@ export default function Chat() {
       const response = await fetch(CHAT_URL, {
         method: 'POST',
         headers: {
-          Accept: 'text/event-stream',
+          'Accept': 'text/event-stream',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -156,14 +156,16 @@ export default function Chat() {
             done = true
             break
           }
-
-          setMessages(prev =>
-            prev.map(message =>
-              message.id === assistantMessage.id
-                ? { ...message, content: message.content + data }
-                : message,
-            ),
-          )
+          const json = JSON.parse(data)
+          if (json.type === 'final') {
+            setMessages(prev =>
+              prev.map(message =>
+                message.id === assistantMessage.id
+                  ? { ...message, content: message.content + json.content }
+                  : message,
+              ),
+            )
+          }
         }
       }
     }
