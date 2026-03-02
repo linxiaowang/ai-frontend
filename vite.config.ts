@@ -49,11 +49,7 @@ export default defineConfig({
     // Rollup 选项
     rollupOptions: {
       output: {
-        // 手动分包策略
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router'],
-          'ui-vendor': ['zustand'],
-        },
+
       },
     },
   },

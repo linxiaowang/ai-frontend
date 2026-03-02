@@ -22,8 +22,8 @@ export const env = {
   mode: getEnv('VITE_MODE', 'development'),
   debug: getBooleanEnv('VITE_DEBUG', true),
 
-  // API 配置
-  apiBaseUrl: getEnv('VITE_API_BASE_URL', '/api'),
+  // API 配置（与后端一致，如后端在 3030 则设为 http://localhost:3030）
+  apiBaseUrl: getEnv('VITE_API_BASE_URL', 'http://localhost:3030'),
 
   // 判断是否为开发环境
   isDev: import.meta.env.DEV,
